@@ -1,0 +1,61 @@
+{
+  "name": "@nexle-soft/quick-desk-client",
+  "description": "Typescript Client for Quick desk's APIs",
+  "version": "v0.0.5",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "private": false,
+  "homepage": "https://www.nexlesoft.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nexlesoft/quick-desk-client"
+  },
+  "keywords": [
+    "quick",
+    "desk",
+    "microservice"
+  ],
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsup index.ts"
+  },
+  "author": "Nexle Soft",
+  "license": "Apache-2.0",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "contributors": [
+    {
+      "name": "Nhan Doan"
+    }
+  ],
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/node": "^22.5.4",
+    "tsup": "^8.2.4",
+    "typescript": "^5.6.2"
+  },
+  "tsup": {
+    "target": "node14",
+    "sourcemap": true,
+    "format": [
+      "esm",
+      "cjs"
+    ],
+    "dts": true,
+    "clean": true,
+    "splitting": false
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "axios": "^1.7.7"
+  }
+}
