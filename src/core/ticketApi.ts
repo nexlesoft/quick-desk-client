@@ -1,4 +1,4 @@
-import { HttpClient, BaseHttpClientParams } from "./axios";
+import { HttpClient } from "./axios";
 import { BaseListResponse, BaseParams, BaseResponse } from "./types/common";
 import { Ticket } from "./types/ticket";
 
@@ -34,11 +34,12 @@ export class TicketApi extends HttpClient {
     });
   }
 
-  async updateTicket(
-    ticketData: Partial<Ticket>
-  ): Promise<BaseResponse<Ticket>> {
+  async updateTicket({
+    id,
+    ...ticketData
+  }: Partial<Ticket>): Promise<BaseResponse<Ticket>> {
     return this.put<BaseResponse<Ticket>>({
-      url: basePath,
+      url: `${basePath}/${id}`,
       data: ticketData,
     });
   }
