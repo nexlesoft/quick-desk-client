@@ -42,6 +42,8 @@ export interface BaseParams {
   limit?: number;
   order?: string;
   f_state?: COMMON_STATE;
+  f_id?: string | number;
+  f_name?: string;
 }
 
 export interface MultiSelectOption<T> {
