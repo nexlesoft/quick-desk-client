@@ -1,5 +1,5 @@
 import { Staff, User } from "./auth";
-import { BaseType, COMMON_STATE } from "./common";
+import { BaseParams, BaseType, COMMON_STATE } from "./common";
 import { Media } from "./media";
 
 export enum TicketType {
@@ -55,4 +55,14 @@ export interface Ticket extends BaseType {
   merchant_email?: string;
   origin_data?: TicketLogData;
   updated_data?: TicketLogData;
+}
+
+export interface TicketGetListParams extends BaseParams {
+  f_type: TicketType;
+  f_staff_id?: string | number;
+  f_priority?: string;
+  f_setting_type_id?: string | number;
+  f_setting_status_id?: string | number;
+  f_application_id?: string | number;
+  f_created_by?: string | number;
 }
