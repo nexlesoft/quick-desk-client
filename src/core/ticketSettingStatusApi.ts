@@ -3,8 +3,6 @@ import { BaseListResponse, BaseParams, BaseResponse } from "./types/common";
 import { TicketStatus } from "./types/ticket";
 
 const ADMIN_TICKET_SETTING_PATH = "/administration-setting-item";
-const TICKET_SETTING_REQUEST_ITEM_PATH = "/ticket-setting-request-item";
-const TICKET_SETTING_REQUEST_GROUP_PATH = "/ticket-setting-request-group";
 
 export class TicketSettingStatusApi extends HttpClient {
   constructor() {
@@ -22,37 +20,37 @@ export class TicketSettingStatusApi extends HttpClient {
   }
 
   // Method to fetch a single status by its ID
-  async getStatusId(ticketId: string): Promise<BaseResponse<TicketStatus>> {
+  async getStatusId(id: string): Promise<BaseResponse<TicketStatus>> {
     return this.get<BaseResponse<TicketStatus>>({
-      url: `${ADMIN_TICKET_SETTING_PATH}/${ticketId}`,
+      url: `${ADMIN_TICKET_SETTING_PATH}/${id}`,
     });
   }
 
   // Method to create a new status
   async createStatus(
-    ticketData: Partial<TicketStatus>
+    data: Partial<TicketStatus>
   ): Promise<BaseResponse<TicketStatus>> {
     return this.post<BaseResponse<TicketStatus>>({
       url: ADMIN_TICKET_SETTING_PATH,
-      data: ticketData,
+      data,
     });
   }
 
   async updateStatus({
     id,
-    ...ticketData
+    ...data
   }: Partial<TicketStatus>): Promise<BaseResponse<TicketStatus>> {
     return this.put<BaseResponse<TicketStatus>>({
       url: `${ADMIN_TICKET_SETTING_PATH}/${id}`,
-      data: ticketData,
+      data,
     });
   }
 
   async deleteStatus(
-    ticketId: Partial<TicketStatus>
+    id: Partial<TicketStatus>
   ): Promise<BaseResponse<TicketStatus>> {
     return this.delete<BaseResponse<TicketStatus>>({
-      url: `${ADMIN_TICKET_SETTING_PATH}/${ticketId}`,
+      url: `${ADMIN_TICKET_SETTING_PATH}/${id}`,
     });
   }
 }
