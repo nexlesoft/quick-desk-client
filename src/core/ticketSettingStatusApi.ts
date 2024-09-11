@@ -6,7 +6,7 @@ const ADMIN_TICKET_SETTING_PATH = "/administration-setting-item";
 const TICKET_SETTING_REQUEST_ITEM_PATH = "/ticket-setting-request-item";
 const TICKET_SETTING_REQUEST_GROUP_PATH = "/ticket-setting-request-group";
 
-export class TicketSettingApi extends HttpClient {
+export class TicketSettingStatusApi extends HttpClient {
   constructor() {
     super();
   }
