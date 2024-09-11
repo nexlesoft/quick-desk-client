@@ -1,4 +1,9 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from "axios";
 import { Configuration } from "../../configuration";
 
 export interface BaseHttpClientParams {
@@ -31,7 +36,7 @@ export class HttpClient {
 
     // Request Interceptor
     this.axiosInstance.interceptors.request.use(
-      (config: AxiosRequestConfig) => {
+      (config: InternalAxiosRequestConfig) => {
         // Add custom logic before sending request (e.g., authentication, logging)
         return config;
       },
