@@ -2,7 +2,7 @@ import { Staff, User } from "./auth";
 import { BaseType } from "./common";
 
 export interface ActivityLog extends BaseType {
-  context: string;
+  context?: string;
   description?: string;
   message: string;
   method: string;
@@ -11,4 +11,5 @@ export interface ActivityLog extends BaseType {
   state: string;
   user?: User;
   staff?: Staff;
+  activity_context: string;
 }
