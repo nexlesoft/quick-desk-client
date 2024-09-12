@@ -1,6 +1,6 @@
 import { HttpClient } from "./axios";
-import { BaseListResponse, BaseParams, BaseResponse } from "./types/common";
-import { Ticket } from "./types/ticket";
+import { BaseListResponse, BaseResponse } from "./types/common";
+import { Ticket, TicketGetListParams } from "./types/ticket";
 
 const basePath = "/ticket";
 const UPDATE_TICKET_STATUS_PATH = "/ticket-change-status";
@@ -11,7 +11,9 @@ export class TicketApi extends HttpClient {
   }
 
   // Method to fetch all tickets
-  async getList(params: BaseParams): Promise<BaseListResponse<Ticket>> {
+  async getList(
+    params: TicketGetListParams
+  ): Promise<BaseListResponse<Ticket>> {
     return this.get<BaseListResponse<Ticket>>({
       url: basePath,
       config: { params },

@@ -65,4 +65,5 @@ export interface TicketGetListParams extends BaseParams {
   f_setting_status_id?: string | number;
   f_application_id?: string | number;
   f_created_by?: string | number;
+  f_merchant_email?: string;
 }
