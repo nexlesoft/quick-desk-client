@@ -55,10 +55,12 @@ export interface Ticket extends BaseType {
   merchant_email?: string;
   origin_data?: TicketLogData;
   updated_data?: TicketLogData;
+  setting_status_id?: number;
+  setting_type_id?: number;
 }
 
 export interface TicketGetListParams extends BaseParams {
-  f_type: TicketType;
+  f_type: TicketType | string;
   f_staff_id?: string | number;
   f_priority?: string;
   f_setting_type_id?: string | number;
