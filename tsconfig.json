@@ -1,13 +1,18 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "ES6",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "Node16",
+    "module": "ESNext",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "Node16"
+    "moduleResolution": "Node",
+    "declaration": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "sourceMap": true,
+    "declarationMap": true
   },
-  "include": ["src"],
+  "include": ["src", "index.ts"],
   "exclude": ["node_modules"]
 }

@@ -108,10 +108,10 @@ export class MediaApi extends HttpClient {
           config: {
             responseType: "blob",
           },
-        })) as any;
+        })) as Blob;
 
-        if (response?.data) {
-          const url = window.URL.createObjectURL(new Blob([response.data]));
+        if (response) {
+          const url = window.URL.createObjectURL(response);
           const link = document.createElement("a");
 
           link.href = url;
@@ -121,6 +121,7 @@ export class MediaApi extends HttpClient {
 
           // Remove the DOM element after the download
           document.body.removeChild(link);
+          window.URL.revokeObjectURL(url);
         }
       }
     }
