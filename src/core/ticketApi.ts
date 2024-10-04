@@ -1,6 +1,6 @@
 import { HttpClient } from "./axios";
 import { BaseListResponse, BaseResponse } from "./types/common";
-import { Ticket, TicketGetListParams } from "./types/ticket";
+import { CreateTicket, Ticket, TicketGetListParams } from "./types/ticket";
 
 const basePath = "/ticket";
 const UPDATE_TICKET_STATUS_PATH = "/ticket-change-status";
@@ -29,7 +29,7 @@ export class TicketApi extends HttpClient {
 
   // Method to create a new ticket
   async createTicket(
-    ticketData: Partial<Ticket>
+    ticketData: Partial<CreateTicket>
   ): Promise<BaseResponse<Ticket>> {
     return this.post<BaseResponse<Ticket>>({
       url: basePath,
@@ -40,7 +40,7 @@ export class TicketApi extends HttpClient {
   async updateTicket({
     id,
     ...ticketData
-  }: Partial<Ticket>): Promise<BaseResponse<Ticket>> {
+  }: Partial<CreateTicket>): Promise<BaseResponse<Ticket>> {
     return this.put<BaseResponse<Ticket>>({
       url: `${basePath}/${id}`,
       data: ticketData,

@@ -59,6 +59,12 @@ export interface Ticket extends BaseType {
   setting_type_id?: number;
 }
 
+export interface CreateTicket
+  extends Omit<Ticket, "media" | "setting_type_id"> {
+  media: number[];
+  setting_type_id: number;
+}
+
 export interface TicketGetListParams extends BaseParams {
   f_type: TicketType | string;
   f_staff_id?: string | number;

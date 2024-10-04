@@ -75,54 +75,35 @@ export class MediaApi extends HttpClient {
     downloadSpecify?: boolean;
     mediaUrls?: string[];
   }): Promise<void> {
-    const validExtensions = [
-      "png",
-      "pdf",
-      "json",
-      "vnd.rar",
-      "ppt",
-      "pptx",
-      "doc",
-      "docx",
-      "xls",
-      "xlsx",
-      "mp4",
-      "rar",
-    ];
-
     // Extract the file extension and normalize to lowercase
     const fileExtension = fileName
       ?.slice(fileName.lastIndexOf(".") + 1)
       .toLowerCase();
 
-    if (!downloadSpecify && validExtensions.includes(fileExtension)) {
-      window.open(fileUrl, "_blank");
+    // If mediaUrls is provided, zip and download those files
+    if (mediaUrls) {
+      await this.downloadAndZip(mediaUrls);
     } else {
-      // If mediaUrls is provided, zip and download those files
-      if (mediaUrls) {
-        await this.downloadAndZip(mediaUrls);
-      } else {
-        // Otherwise, fetch and download the specified media by ID
-        const response = (await this.get({
-          url: `${downloadPath}/${mediaIds?.join("_")}`,
-          config: {
-            responseType: "blob",
-          },
-        })) as Blob;
+      // Otherwise, fetch and download the specified media by ID
+      const response = (await this.get({
+        url: `${downloadPath}/${mediaIds?.join("_")}`,
+        config: {
+          responseType: "blob",
+        },
+      })) as Blob;
 
-        if (response) {
-          const url = window.URL.createObjectURL(response);
-          const link = document.createElement("a");
+      if (response) {
+        const url = window.URL.createObjectURL(response);
+        const link = document.createElement("a");
 
-          link.href = url;
-          link.setAttribute("download", fileName);
-          document.body.appendChild(link);
-          link.click();
+        link.href = url;
+        link.setAttribute("download", fileName);
+        document.body.appendChild(link);
+        link.click();
 
-          // Remove the DOM element after the download
-          document.body.removeChild(link);
-          window.URL.revokeObjectURL(url);
-        }
+        // Remove the DOM element after the download
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
       }
     }
   }
