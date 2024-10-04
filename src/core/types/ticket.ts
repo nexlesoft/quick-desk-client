@@ -53,6 +53,7 @@ export interface Ticket extends BaseType {
   media: Media[];
   type: TicketType;
   merchant_email?: string;
+  merchant?: string;
   origin_data?: TicketLogData;
   updated_data?: TicketLogData;
   setting_status_id?: number;
